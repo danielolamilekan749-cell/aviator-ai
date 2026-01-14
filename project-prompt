@@ -1,0 +1,252 @@
+(Vue.js Aviator Predictor Website – Modern UI)
+
+Project Title:
+Aviator Predictor & Analysis Web Platform
+
+🎯 Project Goal
+
+Build a modern, professional, responsive web application using Vue 3 that provides Aviator game analysis, simulated predictions, ratings, and user interaction, strictly for educational and entertainment purposes.
+
+🧠 Core Rules
+
+Predictions are NOT guaranteed
+
+Display probability-based analysis only
+
+Include clear disclaimer
+
+UI must follow latest design trends (2025–2026)
+
+🧩 Tech Stack
+
+Frontend: Vue 3 (Composition API)
+
+Build Tool: Vite
+
+Styling: Tailwind CSS
+
+Charts: Chart.js / ApexCharts
+
+Icons: Lucide / Heroicons
+
+State Management: Pinia (optional)
+
+Backend (optional): Node.js or Laravel
+
+Auth (optional): Firebase / Supabase / JWT
+
+🧭 Navbar Structure (MANDATORY)
+
+The navbar must be fixed, responsive, and modern (glassmorphism style).
+
+Navbar links:
+
+Home
+
+Recent Analysis
+
+Rating & Comment
+
+Aviator Bot
+
+About
+
+Contact
+
+Sign Up / Login
+
+🎨 UI & Design Requirements
+
+Dark mode by default
+
+Glassmorphism cards
+
+Rounded corners (2xl)
+
+Smooth hover & button animations
+
+Neon accent colors (green & blue)
+
+Minimal typography
+
+Mobile-first responsive design
+
+Color Palette
+
+Background: #0B0F1A
+
+Primary: #22C55E
+
+Accent: #38BDF8
+
+Text: #E5E7EB
+
+📄 Pages & Features
+🏠 Home
+
+Hero section explaining platform
+
+Call-to-action buttons
+
+Preview of prediction system
+
+Disclaimer section
+
+📊 Recent Analysis
+
+Display last game rounds (simulated or stored)
+
+Charts:
+
+Crash multiplier trends
+
+High vs low frequency
+
+Filters by time and range
+
+⭐ Rating & Comment
+
+Users can:
+
+Rate predictions (1–5 stars)
+
+Leave comments
+
+Admin moderation support
+
+Sort by newest / highest rated
+
+🤖 Aviator Bot
+
+Simulated prediction engine
+
+Display:
+
+Next predicted multiplier range
+
+Confidence percentage
+
+Button to generate prediction
+
+History of generated predictions
+
+Clear “Entertainment Only” label
+
+ℹ️ About
+
+Explain:
+
+What Aviator is
+
+How analysis works
+
+No guaranteed winnings
+
+Transparency and fairness message
+
+📩 Contact
+
+Contact form:
+
+Name
+
+Email
+
+Message
+
+Success / error toast notifications
+
+Optional email integration
+
+🔐 Sign Up / Login
+
+Email & password authentication
+
+Secure form validation
+
+Optional:
+
+Google login
+
+Profile avatar
+
+Redirect to dashboard after login
+
+🧠 Prediction Logic (SIMULATED)
+
+Use:
+
+Randomized probability
+
+Weighted multipliers
+
+Trend-based logic
+
+Output:
+
+Multiplier range (e.g. 1.8x – 3.2x)
+
+Confidence percentage
+
+Must never claim certainty
+
+⚠️ Disclaimer (REQUIRED)
+
+Display clearly on:
+
+Home
+
+Aviator Bot
+
+Footer
+
+Text:
+
+This platform provides analysis and simulated predictions for educational and entertainment purposes only. We do not guarantee winnings or accuracy.
+
+🚀 Performance & UX
+
+Fast page transitions
+
+Lazy loading
+
+Smooth animations
+
+SEO-friendly structure
+
+📦 Deliverables
+
+Fully structured Vue project
+
+Clean component-based architecture
+
+Reusable UI components
+
+Responsive across all devices
+
+✅ Final Expectation
+
+The finished website should feel:
+
+Premium
+
+Trustworthy
+
+Modern
+
+AI-powered
+
+Easy to use
+
+🔥 Optional Future Features
+
+User dashboard
+
+Prediction history per user
+
+Subscription system
+
+Admin panel
+
+Push notifications
+
