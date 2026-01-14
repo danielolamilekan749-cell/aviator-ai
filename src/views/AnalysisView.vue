@@ -314,7 +314,7 @@ const createPieChart = () => {
 }
 
 const updateCharts = () => {
-  if (lineChart) {
+  if (lineChart && lineChart.data.datasets[0]) {
     const newData = Math.random() * 8 + 1
     lineChart.data.datasets[0].data.shift()
     lineChart.data.datasets[0].data.push(newData)
