@@ -14,4 +14,22 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'chart': ['chart.js', 'vue-chartjs'],
+        }
+      }
+    },
+    chunkSizeWarningLimit: 1000,
+  },
+  server: {
+    hmr: {
+      overlay: false
+    }
+  },
+  optimizeDeps: {
+    include: ['vue', 'vue-router', 'pinia']
+  }
 })

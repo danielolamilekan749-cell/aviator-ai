@@ -236,11 +236,12 @@ const experienceLevels = [
   }
 ]
 
-const handleContinue = () => {
-  // Store form data in localStorage or state management
+const handleContinue = async () => {
+  // Store form data in localStorage
   localStorage.setItem('signupData', JSON.stringify(formData.value))
   
-  // Navigate to plan selection
-  router.push('/choose-plan')
+  // For now, just redirect to dashboard
+  // TODO: Integrate with Firebase auth when credentials are added
+  router.push('/dashboard')
 }
 </script>

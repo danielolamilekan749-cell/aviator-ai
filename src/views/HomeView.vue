@@ -24,7 +24,7 @@
             </p>
             
             <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start mb-8">
-              <router-link to="/signup" class="btn-primary text-lg px-8 py-4 flex items-center justify-center">
+              <router-link to="/dashboard" class="btn-primary text-lg px-8 py-4 flex items-center justify-center">
                 <Zap class="w-5 h-5 mr-2" />
                 Get Started Now
               </router-link>
@@ -122,10 +122,11 @@
                 <video 
                   class="w-full h-auto"
                   controls
-                  autoplay
                   muted
                   loop
                   playsinline
+                  preload="metadata"
+                  loading="lazy"
                 >
                   <source src="/generated_video.mp4" type="video/mp4">
                   Your browser does not support the video tag.

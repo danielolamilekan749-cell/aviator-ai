@@ -8,6 +8,8 @@
   },
   "scripts": {
     "dev": "vite",
+    "server": "node server.js",
+    "dev:all": "npm run server & npm run dev",
     "build": "run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
     "test:unit": "vitest",
@@ -19,6 +21,10 @@
   },
   "dependencies": {
     "chart.js": "^4.5.1",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "firebase": "^12.8.0",
     "lucide-vue-next": "^0.562.0",
     "pinia": "^3.0.4",
     "vue": "^3.5.26",

@@ -269,11 +269,12 @@
         </button>
         <button
           @click="proceedToPayment"
-          :disabled="!selectedPlan"
+          :disabled="!selectedPlan || isProcessing"
           class="px-16 py-4 rounded-xl font-bold text-lg bg-gradient-to-r from-primary to-accent text-white hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center shadow-2xl"
         >
-          Proceed to Payment
-          <ArrowRight class="w-5 h-5 ml-2" />
+          <span v-if="!isProcessing">Proceed to Payment</span>
+          <span v-else>Processing...</span>
+          <ArrowRight v-if="!isProcessing" class="w-5 h-5 ml-2" />
         </button>
       </div>
 
@@ -299,9 +300,19 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { Check, Zap, TrendingUp, Crown, ArrowRight, ArrowLeft, Shield } from 'lucide-vue-next'
+import { useDodoPayments } from '@/composables/useDodoPayments'
 
 const router = useRouter()
 const selectedPlan = ref('')
+const isProcessing = ref(false)
+const { createPaymentLink } = useDodoPayments()
+
+// Product IDs - Real product IDs from Dodo Payments dashboard
+const productIds = {
+  daily: 'pdt_0NWHLItzRLftvaEOhJl22',  // Daily Plan - ₦5,000
+  monthly: 'pdt_0NWHLeuqTs7S6Fe906ZNh',  // Monthly Plan - ₦30,000
+  quarterly: 'pdt_0NWHLstctPK0hxcbqICnQ'  // Quarterly Plan - ₦90,000
+}
 
 const selectPlan = (plan: string, price: number) => {
   selectedPlan.value = plan
@@ -312,10 +323,52 @@ const goBack = () => {
   router.push('/signup')
 }
 
-const proceedToPayment = () => {
+const proceedToPayment = async () => {
   if (!selectedPlan.value) return
   
-  const planData = JSON.parse(localStorage.getItem('selectedPlan') || '{}')
-  alert(`Proceeding to payment for ${selectedPlan.value} plan!\nAmount: ₦${planData.price.toLocaleString()}`)
+  isProcessing.value = true
+  
+  try {
+    // Get user data from signup
+    const signupData = JSON.parse(localStorage.getItem('signupData') || '{}')
+    const planData = JSON.parse(localStorage.getItem('selectedPlan') || '{}')
+    
+    if (!signupData.email) {
+      alert('Please complete the signup form first')
+      router.push('/signup')
+      return
+    }
+
+    // Create payment link with Dodo Payments
+    const result = await createPaymentLink({
+      firstName: signupData.firstName,
+      lastName: signupData.lastName,
+      email: signupData.email,
+      phone: signupData.phone,
+      country: signupData.country || 'NG',
+      city: 'Lagos',
+      state: 'Lagos',
+      addressLine: 'N/A',
+      zipCode: '100001',
+      productId: productIds[selectedPlan.value as keyof typeof productIds],
+      amount: planData.price,
+      planName: selectedPlan.value
+    })
+
+    if (result.success && result.paymentLink) {
+      // Store payment ID for verification
+      localStorage.setItem('paymentId', result.paymentId || '')
+      
+      // Redirect to Dodo Payments checkout
+      window.location.href = result.paymentLink
+    } else {
+      alert(`Payment Error: ${result.error}`)
+    }
+  } catch (error) {
+    console.error('Payment processing error:', error)
+    alert('Failed to process payment. Please try again.')
+  } finally {
+    isProcessing.value = false
+  }
 }
 </script>

@@ -40,9 +40,14 @@ const router = createRouter({
       component: () => import('../views/SignUpView.vue'),
     },
     {
-      path: '/choose-plan',
-      name: 'choose-plan',
-      component: () => import('../views/ChoosePlanView.vue'),
+      path: '/dashboard',
+      name: 'dashboard',
+      component: () => import('../views/DashboardView.vue'),
+    },
+    {
+      path: '/dashboard/bot',
+      name: 'dashboard-bot',
+      component: () => import('../views/DashboardBotView.vue'),
     },
   ],
 })
