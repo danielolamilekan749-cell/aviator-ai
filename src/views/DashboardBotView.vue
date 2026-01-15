@@ -360,9 +360,9 @@ const getParticleStyle = (index: number) => {
   }
 }
 
-const getRandomIcon = () => {
+const getRandomIcon = (): string => {
   const icons = ['🎯', '📈', '⚡', '🎲', '🔥', '💎', '⭐', '🚀']
-  return icons[Math.floor(Math.random() * icons.length)]
+  return icons[Math.floor(Math.random() * icons.length)] || '🎯'
 }
 
 onMounted(() => {
